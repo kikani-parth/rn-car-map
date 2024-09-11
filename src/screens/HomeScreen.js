@@ -1,12 +1,13 @@
-// CarListScreen.js
+// HomeScreen.js
 
 import React from 'react';
-import { View, StyleSheet, ScrollView, SafeAreaView } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import locationsData from '../../assets/locations.json';
 import CarList from '../components/CarList';
 import CarMap from '../components/CarMap';
+import FilteredCarList from '../components/FilteredCarList';
 
-const CarListScreen = () => {
+const HomeScreen = () => {
   const cars = locationsData.placemarks;
 
   return (
@@ -14,11 +15,11 @@ const CarListScreen = () => {
       <View style={styles.mapSection}>
         <CarMap />
       </View>
-      <View style={styles.listSection}>
-        <ScrollView>
-          <CarList cars={cars} />
-        </ScrollView>
-      </View>
+      {/* <View style={styles.listSection}> */}
+      <ScrollView style={styles.listSection}>
+        <FilteredCarList cars={cars} />
+      </ScrollView>
+      {/* </View> */}
     </View>
   );
 };
@@ -35,4 +36,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CarListScreen;
+export default HomeScreen;

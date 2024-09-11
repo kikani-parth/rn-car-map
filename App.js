@@ -1,19 +1,11 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import CarListScreen from './src/screens/CarListScreen';
+import HomeScreen from './src/screens/HomeScreen';
 
 const App = () => {
-  return (
-    <View style={styles.container}>
-      <CarListScreen />
-    </View>
-  );
+  return <HomeScreen />;
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+const styles = StyleSheet.create({});
 
 export default App;
