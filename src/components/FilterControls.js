@@ -9,10 +9,10 @@ const FilterControls = ({ filter, setFilter }) => {
       <TextInput
         autoCapitalize="none"
         autoCorrect={false}
-        style={styles.nameFilterInput}
+        style={styles.inputStyle}
         placeholder="Filter by name"
-        value={filter}
-        onChangeText={setFilter}
+        value={filter} // Controlled input
+        onChangeText={setFilter} // Update the filter state
       />
     </View>
   );
