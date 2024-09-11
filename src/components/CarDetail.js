@@ -1,7 +1,9 @@
-import React from 'react';
+// CarDetail.js
+
+import React, { memo } from 'react';
 import { View, Text, StyleSheet, Platform } from 'react-native';
 
-const CarDetail = ({ car }) => {
+const CarDetail = memo(({ car }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.name}>{car.name}</Text>
@@ -12,7 +14,7 @@ const CarDetail = ({ car }) => {
       <Text>Interior: {car.interior}</Text>
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {
