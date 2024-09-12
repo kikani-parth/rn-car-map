@@ -31,12 +31,27 @@ const FilterControls = ({ filters, onFilterChange }) => {
         onChangeText={(text) => onFilterChange('engineType', text)}
       />
       <TextInput
-        autoCapitalize="none"
-        autoCorrect={false}
+        keyboardType="numeric"
         style={styles.fuelFilterInput}
         placeholder="Filter by fuel"
         value={filters.fuel}
         onChangeText={(text) => onFilterChange('fuel', text)}
+      />
+      <TextInput
+        autoCapitalize="none"
+        autoCorrect={false}
+        style={styles.exteriorFilterInput}
+        placeholder="Filter by exterior"
+        value={filters.exterior}
+        onChangeText={(text) => onFilterChange('exterior', text)}
+      />
+      <TextInput
+        autoCapitalize="none"
+        autoCorrect={false}
+        style={styles.interiorFilterInput}
+        placeholder="Filter by interior"
+        value={filters.interior}
+        onChangeText={(text) => onFilterChange('interior', text)}
       />
     </View>
   );
@@ -65,6 +80,18 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   fuelFilterInput: {
+    borderColor: '#ccc',
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 5,
+  },
+  exteriorFilterInput: {
+    borderColor: '#ccc',
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 5,
+  },
+  interiorFilterInput: {
     borderColor: '#ccc',
     borderWidth: 1,
     padding: 10,
