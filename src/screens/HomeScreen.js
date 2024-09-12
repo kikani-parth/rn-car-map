@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   mapSection: {
-    flex: 2,
+    flex: 1.5,
   },
   listSection: {
     flex: 1,
