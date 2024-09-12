@@ -8,6 +8,16 @@ const CarMap = ({ cars }) => {
   const [errorMsg, setErrorMsg] = useState(null);
   const [selectedMarker, setSelectedMarker] = useState(null);
 
+  const initialRegion = React.useMemo(
+    () => ({
+      longitude: cars[0].coordinates[0],
+      latitude: cars[0].coordinates[1],
+      latitudeDelta: 0.05,
+      longitudeDelta: 0.05,
+    }),
+    [cars]
+  );
+
   useEffect(() => {
     const getLocation = async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -47,12 +57,7 @@ const CarMap = ({ cars }) => {
     <View style={styles.container}>
       <MapView
         style={styles.map}
-        initialRegion={{
-          longitude: cars[0].coordinates[0],
-          latitude: cars[0].coordinates[1], // Center the map around the first car initially
-          latitudeDelta: 0.05,
-          longitudeDelta: 0.05,
-        }}
+        initialRegion={initialRegion}
         showsUserLocation={!!userLocation}
       >
         {cars.map((car) => {
