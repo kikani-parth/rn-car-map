@@ -19,7 +19,7 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.mapSection}>
-        <CarMap />
+        <CarMap cars={cars} />
       </View>
       <KeyboardAvoidingView
         style={styles.listSection}

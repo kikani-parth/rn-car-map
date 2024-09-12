@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, ActivityIndicator, Text } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 
-const CarMap = () => {
+const CarMap = ({ cars }) => {
   const [userLocation, setUserLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
 
@@ -46,13 +46,24 @@ const CarMap = () => {
       <MapView
         style={styles.map}
         initialRegion={{
-          latitude: userLocation.latitude,
-          longitude: userLocation.longitude,
-          latitudeDelta: 0.01,
-          longitudeDelta: 0.01,
+          longitude: cars[0].coordinates[0],
+          latitude: cars[0].coordinates[1], // Center the map around the first car initially
+          latitudeDelta: 0.05,
+          longitudeDelta: 0.05,
         }}
-        showsUserLocation={true}
-      ></MapView>
+        showsUserLocation={!!userLocation}
+      >
+        {cars.map((car) => (
+          <Marker
+            key={car.vin}
+            coordinate={{
+              longitude: car.coordinates[0],
+              latitude: car.coordinates[1],
+            }}
+            title={car.name}
+          />
+        ))}
+      </MapView>
     </View>
   );
 };
