@@ -11,6 +11,7 @@ const FilteredCarList = ({ cars }) => {
     name: '',
     address: '',
     engineType: '',
+    fuel: '',
   });
 
   const handleFilterChange = (filterType, value) => {
@@ -24,7 +25,8 @@ const FilteredCarList = ({ cars }) => {
     cars,
     filters.name,
     filters.address,
-    filters.engineType
+    filters.engineType,
+    filters.fuel
   );
   return (
     <View style={styles.container}>

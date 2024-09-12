@@ -30,6 +30,14 @@ const FilterControls = ({ filters, onFilterChange }) => {
         value={filters.engineType}
         onChangeText={(text) => onFilterChange('engineType', text)}
       />
+      <TextInput
+        autoCapitalize="none"
+        autoCorrect={false}
+        style={styles.fuelFilterInput}
+        placeholder="Filter by fuel"
+        value={filters.fuel}
+        onChangeText={(text) => onFilterChange('fuel', text)}
+      />
     </View>
   );
 };
@@ -51,6 +59,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   engineTypeFilterInput: {
+    borderColor: '#ccc',
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 5,
+  },
+  fuelFilterInput: {
     borderColor: '#ccc',
     borderWidth: 1,
     padding: 10,
