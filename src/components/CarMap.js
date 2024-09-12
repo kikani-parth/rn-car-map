@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, Callout } from 'react-native-maps';
 import * as Location from 'expo-location';
 
 const CarMap = ({ cars }) => {
   const [userLocation, setUserLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
+  const [selectedMarker, setSelectedMarker] = useState(null);
 
   useEffect(() => {
     const getLocation = async () => {
@@ -22,6 +23,16 @@ const CarMap = ({ cars }) => {
     getLocation();
   }, []);
 
+  const handleMarkerPress = (vin) => {
+    if (selectedMarker === vin) {
+      // Deselect marker if the same one is tapped
+      setSelectedMarker(null);
+    } else {
+      // Select a new marker
+      setSelectedMarker(vin);
+    }
+  };
+
   if (errorMsg) {
     return (
       <View style={styles.errorMsgContainer}>
@@ -31,15 +42,6 @@ const CarMap = ({ cars }) => {
       </View>
     );
   }
-
-  //   if (!userLocation) {
-  //     // Show a loading indicator while the location is being fetched
-  //     return (
-  //       <View style={styles.loadingContainer}>
-  //         <ActivityIndicator size="large" color="#0000ff" />
-  //       </View>
-  //     );
-  //   }
 
   return (
     <View style={styles.container}>
@@ -53,16 +55,35 @@ const CarMap = ({ cars }) => {
         }}
         showsUserLocation={!!userLocation}
       >
-        {cars.map((car) => (
-          <Marker
-            key={car.vin}
-            coordinate={{
-              longitude: car.coordinates[0],
-              latitude: car.coordinates[1],
-            }}
-            title={car.name}
-          />
-        ))}
+        {cars.map((car) => {
+          const isSelected = selectedMarker === car.vin;
+
+          // Show all cars if no car is selected, or show only the selected car
+          if (selectedMarker === null || selectedMarker === car.vin) {
+            // console.log(selectedMarker);
+            // console.log(isSelected);
+
+            return (
+              <Marker
+                key={car.vin}
+                coordinate={{
+                  longitude: car.coordinates[0],
+                  latitude: car.coordinates[1],
+                }}
+                onPress={() => handleMarkerPress(car.vin)}
+              >
+                {/* {isSelected && ( */}
+                <Callout>
+                  <View>
+                    <Text style={styles.calloutText}>{car.name}</Text>
+                  </View>
+                </Callout>
+                {/* )} */}
+              </Marker>
+            );
+          }
+          return null;
+        })}
       </MapView>
     </View>
   );
