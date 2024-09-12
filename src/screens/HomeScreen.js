@@ -9,7 +9,6 @@ import {
   Platform,
 } from 'react-native';
 import locationsData from '../../assets/locations.json';
-import CarList from '../components/CarList';
 import CarMap from '../components/CarMap';
 import FilteredCarList from '../components/FilteredCarList';
 
@@ -38,7 +37,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   mapSection: {
-    flex: 1.5,
+    flex: 2,
   },
   listSection: {
     flex: 1,

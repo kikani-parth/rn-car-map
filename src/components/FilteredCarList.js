@@ -1,7 +1,7 @@
 // FilteredCarList.js
 
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import FilterControls from './FilterControls';
 import SortControls from './SortControls';
 import CarList from './CarList';
@@ -20,7 +20,7 @@ const FilteredCarList = ({ cars }) => {
   });
 
   const [sortBy, setSortBy] = useState('name');
-  const [isVisible, setIsVisible] = useState(false); // Visibility state
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleFilterChange = (filterType, value) => {
     setFilters((prevFilters) => ({
@@ -71,12 +71,7 @@ const FilteredCarList = ({ cars }) => {
 };
 
 const styles = StyleSheet.create({
-  //   container: {
-  //     marginVertical: 10,
-  //     marginHorizontal: 10,
-  //   },
   iconContainer: {
-    // Optional styling for the filter icon
     marginTop: 10,
     marginLeft: 10,
   },

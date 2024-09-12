@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import MapView, { Marker, Callout } from 'react-native-maps';
+import MapView, { Callout } from 'react-native-maps';
 import * as Location from 'expo-location';
+import CarMarker from './CarMarker';
 
 const CarMap = ({ cars }) => {
   const [userLocation, setUserLocation] = useState(null);
@@ -69,12 +70,9 @@ const CarMap = ({ cars }) => {
             // console.log(isSelected);
 
             return (
-              <Marker
+              <CarMarker
                 key={car.vin}
-                coordinate={{
-                  longitude: car.coordinates[0],
-                  latitude: car.coordinates[1],
-                }}
+                car={car}
                 onPress={() => handleMarkerPress(car.vin)}
               >
                 {/* {isSelected && ( */}
@@ -84,7 +82,7 @@ const CarMap = ({ cars }) => {
                   </View>
                 </Callout>
                 {/* )} */}
-              </Marker>
+              </CarMarker>
             );
           }
           return null;

@@ -1,7 +1,7 @@
 // CarList.js
 
 import React, { useCallback } from 'react';
-import { View, FlatList, StyleSheet, ScrollView } from 'react-native';
+import { View, FlatList, StyleSheet } from 'react-native';
 import CarDetail from './CarDetail';
 
 const CarList = ({ cars }) => {
