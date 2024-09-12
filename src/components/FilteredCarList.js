@@ -1,28 +1,25 @@
 // FilteredCarList.js
 
 import React, { useState } from 'react';
-import {
-  View,
-  TextInput,
-  StyleSheet,
-  KeyboardAvoidingView,
-  Platform,
-} from 'react-native';
+import { View, TextInput, StyleSheet } from 'react-native';
 import FilterControls from './FilterControls';
 import CarList from './CarList';
 import { filterCars } from '../utils/filterUtils';
 
 const FilteredCarList = ({ cars }) => {
-  const [filter, setFilter] = useState('');
+  const [filters, setFilters] = useState({ name: '', address: '' });
 
-  // Filter cars based on name
-  const filteredCars = cars.filter((car) =>
-    car.name.toLowerCase().includes(filter.toLowerCase())
-  );
+  const handleFilterChange = (filterType, value) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [filterType]: value,
+    }));
+  };
 
+  const filteredCars = filterCars(cars, filters.name, filters.address);
   return (
     <View style={styles.container}>
-      <FilterControls filter={filter} setFilter={setFilter} />
+      <FilterControls filters={filters} onFilterChange={handleFilterChange} />
       <CarList cars={filteredCars} />
     </View>
   );

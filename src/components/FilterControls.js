@@ -3,16 +3,24 @@
 import React from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 
-const FilterControls = ({ filter, setFilter }) => {
+const FilterControls = ({ filters, onFilterChange }) => {
   return (
     <View style={styles.container}>
       <TextInput
         autoCapitalize="none"
         autoCorrect={false}
-        style={styles.inputStyle}
+        style={styles.nameFilterInput}
         placeholder="Filter by name"
-        value={filter} // Controlled input
-        onChangeText={setFilter} // Update the filter state
+        value={filters.name}
+        onChangeText={(text) => onFilterChange('name', text)}
+      />
+      <TextInput
+        autoCapitalize="none"
+        autoCorrect={false}
+        style={styles.addressFilterInput}
+        placeholder="Filter by address"
+        value={filters.address}
+        onChangeText={(text) => onFilterChange('address', text)}
       />
     </View>
   );
@@ -23,6 +31,12 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   nameFilterInput: {
+    borderColor: '#ccc',
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 5,
+  },
+  addressFilterInput: {
     borderColor: '#ccc',
     borderWidth: 1,
     padding: 10,
