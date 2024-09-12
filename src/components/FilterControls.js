@@ -22,6 +22,14 @@ const FilterControls = ({ filters, onFilterChange }) => {
         value={filters.address}
         onChangeText={(text) => onFilterChange('address', text)}
       />
+      <TextInput
+        autoCapitalize="none"
+        autoCorrect={false}
+        style={styles.engineTypeFilterInput}
+        placeholder="Filter by engine type"
+        value={filters.engineType}
+        onChangeText={(text) => onFilterChange('engineType', text)}
+      />
     </View>
   );
 };
@@ -37,6 +45,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   addressFilterInput: {
+    borderColor: '#ccc',
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 5,
+  },
+  engineTypeFilterInput: {
     borderColor: '#ccc',
     borderWidth: 1,
     padding: 10,

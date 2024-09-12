@@ -7,7 +7,11 @@ import CarList from './CarList';
 import { filterCars } from '../utils/filterUtils';
 
 const FilteredCarList = ({ cars }) => {
-  const [filters, setFilters] = useState({ name: '', address: '' });
+  const [filters, setFilters] = useState({
+    name: '',
+    address: '',
+    engineType: '',
+  });
 
   const handleFilterChange = (filterType, value) => {
     setFilters((prevFilters) => ({
@@ -16,7 +20,12 @@ const FilteredCarList = ({ cars }) => {
     }));
   };
 
-  const filteredCars = filterCars(cars, filters.name, filters.address);
+  const filteredCars = filterCars(
+    cars,
+    filters.name,
+    filters.address,
+    filters.engineType
+  );
   return (
     <View style={styles.container}>
       <FilterControls filters={filters} onFilterChange={handleFilterChange} />
