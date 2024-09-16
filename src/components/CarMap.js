@@ -99,11 +99,6 @@ const styles = StyleSheet.create({
   map: {
     ...StyleSheet.absoluteFillObject, // Fills the entire View
   },
-  loadingContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   errorMsgContainer: {
     flex: 1,
     justifyContent: 'center',
