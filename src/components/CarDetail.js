@@ -7,10 +7,10 @@ const CarDetail = memo(({ car }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.name}>{car.name}</Text>
-      <Text>Address: {car.address}</Text>
-      <Text>Engine type: {car.engineType}</Text>
-      <Text>Fuel: {car.fuel}</Text>
-      <Text>Exterior: {car.exterior}</Text>
+      <Text style={styles.text}>Address: {car.address}</Text>
+      <Text style={styles.text}>Engine type: {car.engineType}</Text>
+      <Text style={styles.text}>Fuel: {car.fuel}</Text>
+      <Text style={styles.text}>Exterior: {car.exterior}</Text>
       <Text>Interior: {car.interior}</Text>
     </View>
   );
@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     padding: 15,
     backgroundColor: '#FFF',
-    borderRadius: 15,
-    width: 300,
+    borderRadius: 10,
+    // width: 300,
 
     // Shadow for iOS
     shadowColor: '#000',
@@ -42,7 +42,13 @@ const styles = StyleSheet.create({
   name: {
     fontWeight: 'bold',
     fontSize: 18,
-    marginBottom: 8,
+    marginBottom: 10,
+    color: '#0F52BA',
+    // color: '#4682B4',
+    // color: '#6082B6',
+  },
+  text: {
+    marginBottom: 4, // Add spacing between each text element
   },
 });
 

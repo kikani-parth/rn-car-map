@@ -40,11 +40,12 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderRadius: 5,
     marginRight: 10,
-    backgroundColor: '#B2BEB5',
+    backgroundColor: '#E5E4E2',
+    borderColor: '#E5E4E2',
   },
   selectedButton: {
-    backgroundColor: '#FF5F1F',
-    borderColor: '#FF5F1F',
+    backgroundColor: '#A7C7E7',
+    borderColor: '#A7C7E7',
   },
   buttonText: {},
 });

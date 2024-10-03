@@ -8,11 +8,11 @@ const CarList = ({ cars }) => {
   const renderItem = useCallback(({ item }) => {
     return <CarDetail car={item} />;
   }, []);
+
   return (
     <View>
       <FlatList
-        horizontal
-        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         data={cars}
         keyExtractor={(car) => car.vin}
         renderItem={renderItem}

@@ -23,20 +23,22 @@ const App = () => {
     <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen
-          name="CarList"
+          name="Car List"
           component={CarListScreen}
           options={{
             tabBarLabel: 'Car List',
             tabBarIcon: () => <ListIcon />,
+            headerShown: false,
           }}
         />
 
         <Tab.Screen
-          name="CarMap"
+          name="Car Map"
           component={CarMapScreen}
           options={{
             tabBarLabel: 'Car Map',
             tabBarIcon: () => <MapIcon />,
+            headerShown: false,
           }}
         />
       </Tab.Navigator>

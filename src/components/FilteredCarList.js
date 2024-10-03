@@ -52,7 +52,7 @@ const FilteredCarList = ({ cars }) => {
         onPress={handleToggleVisibility}
         style={styles.iconContainer}
       >
-        <FontAwesome name="filter" size={24} color="#FF5F1F" />
+        <FontAwesome name="filter" size={24} color="#4682B4" />
       </TouchableOpacity>
 
       {/* Conditionally show FilterControls and SortControls */}
