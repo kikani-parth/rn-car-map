@@ -1,7 +1,13 @@
 // FilteredCarList.js
 
 import React, { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  Platform,
+} from 'react-native';
 import FilterControls from './FilterControls';
 import SortControls from './SortControls';
 import CarList from './CarList';
@@ -46,34 +52,68 @@ const FilteredCarList = ({ cars }) => {
   const sortedCars = sortCars(filteredCars, 'asc', sortBy);
 
   return (
-    <View style={styles.container}>
-      {/* Filter Icon */}
-      <TouchableOpacity
-        onPress={handleToggleVisibility}
-        style={styles.iconContainer}
-      >
-        <FontAwesome name="filter" size={24} color="#4682B4" />
-      </TouchableOpacity>
+    <>
+      <View style={styles.headerContainer}>
+        <Text style={styles.header}>Car Mall</Text>
+        {/* Filter Icon */}
+        <TouchableOpacity
+          onPress={handleToggleVisibility}
+          style={styles.iconContainer}
+        >
+          <FontAwesome name="filter" size={24} color="#4682B4" />
+        </TouchableOpacity>
+      </View>
 
       {/* Conditionally show FilterControls and SortControls */}
       {isVisible && (
-        <View>
+        <>
           <FilterControls
             filters={filters}
             onFilterChange={handleFilterChange}
           />
-          <SortControls sortBy={sortBy} onSortByChange={setSortBy} />
-        </View>
+          <View style={styles.sortControls}>
+            <SortControls sortBy={sortBy} onSortByChange={setSortBy} />
+          </View>
+        </>
       )}
       <CarList cars={sortedCars} />
-    </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
+  headerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    position: 'relative',
+    margin: 10,
+  },
+  header: {
+    flex: 1,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 25,
+    color: '#0F52BA',
+  },
   iconContainer: {
-    marginTop: 10,
-    marginLeft: 10,
+    position: 'absolute',
+    right: 0,
+    marginHorizontal: 10,
+  },
+  sortControls: {
+    // Shadow for iOS
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.13,
+    shadowRadius: 5,
+
+    // Elevation for Android
+    ...Platform.select({
+      android: {
+        elevation: 8,
+      },
+    }),
   },
 });
 
